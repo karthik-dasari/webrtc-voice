@@ -1,15 +1,14 @@
 {
     "version": 2,
-    "builds": [
-        {
-            "src": "./index.py",
-            "use": "@vercel/python"
-        }
-    ],
+    "builds": [{
+        "src": "videocall/wsgi.py",
+        "use": "@ardnt/vercel-python-wsgi",
+        "config": { "maxLambdaSize": "15mb" }
+    }],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/"
+            "dest": "videocall/wsgi.py"
         }
     ]
 }
